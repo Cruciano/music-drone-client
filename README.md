@@ -1,6 +1,7 @@
 # Official client for Music Drone!
 
-This project is official client for Music Drone, available on https://github.com/Vadimur/MusicDroneOnWeb
+This project is official client for Music Drone, available on https://github.com/Vadimur/MusicDroneOnWeb \
+The client is written on React JS
 
 ### `npm update`
 
