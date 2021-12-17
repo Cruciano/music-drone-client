@@ -1,6 +1,7 @@
 .header {
     background-color: #274684;
     padding: 12px 40px 12px 40px;
+    font-size: 25px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,10 +17,12 @@
     flex-direction: row;
 }
 
-.links a {
+.header a {
     color: white;
-    font-size: 25px;
     text-decoration: none;
+}
+
+.links a {
     display: block;
     padding-left: 15px;
     padding-right: 15px;

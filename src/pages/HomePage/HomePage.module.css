@@ -1,0 +1,41 @@
+.page {
+    height: 100%;
+    background-color: #071739;
+}
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    padding: 30px;
+}
+
+.subtitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    padding: 5px;
+}
+
+.subtitle button {
+    background-color: #274684;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 18px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+}
+.subtitle button:hover {
+    cursor: pointer;
+    background-color: #E9E9E9;
+    border: solid 2px #274684;
+    color: #274684;
+}

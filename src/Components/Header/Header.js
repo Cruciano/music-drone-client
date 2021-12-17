@@ -5,9 +5,11 @@ import styles from './Header.module.css';
 const Header = () => {
     return (
         <header className={styles.header}>
-            <div className={styles.title}>Music Drone</div>
+            <div className={styles.title}>
+                <NavLink to="/Home">Music Drone</NavLink>
+            </div>
             <div className={styles.links}>
-                <NavLink to="/Registration">Sign up</NavLink><br/>
+                <NavLink to="/Registration">Sign up</NavLink>
                 <NavLink to="/Login">Sign in</NavLink>
             </div>
         </header>
