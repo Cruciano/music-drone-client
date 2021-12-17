@@ -1,17 +1,26 @@
 import './App.css';
 import {Route, Switch} from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
-import RegistrationPage from "./pages/AuthenticationPages/RegistrationPage";
-import LoginPage from "./pages/AuthenticationPages/LoginPage";
+import Redirect from "react-router-dom/es/Redirect";
+import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
+import Error404 from "./pages/Error404/Error404";
 
 function App() {
     return (
         <div className="App">
-            <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route exact path="/Login" component={LoginPage}/>
-                <Route exact path="/Registration" component={RegistrationPage}/>
-            </Switch>
+            <Header/>
+            <div className="content">
+                <Switch>
+                    <Route exact path="/Home" component={HomePage}/>
+                    <Route exact path="/Error" component={Error404}/>
+                    <Route exact path="/">
+                        <Redirect to="/Home"/>
+                    </Route>
+                    <Redirect to="/Error"/>
+                </Switch>
+            </div>
+            <Footer/>
         </div>
     );
 }

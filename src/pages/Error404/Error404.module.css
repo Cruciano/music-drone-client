@@ -1,0 +1,20 @@
+.page {
+    background-color: #071739;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.page img {
+    width: 200px;
+    height: 200px;
+    margin-right: 40px;
+}
+
+.wrapper {
+    width: 550px;
+    height: 200px;
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+}

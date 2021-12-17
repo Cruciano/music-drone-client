@@ -3,12 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import LoginPage from "./pages/AuthenticationPages/LoginPage";
+import RegistrationPage from "./pages/AuthenticationPages/RegistrationPage";
+
+function Root() {
+    return (
+        <div className="App">
+            <Switch>
+                <Route exact path="/Login" component={LoginPage}/>
+                <Route exact path="/Registration" component={RegistrationPage}/>
+                <Route path="*" component={App}/>
+            </Switch>
+        </div>
+    );
+}
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App/>
+            <Root/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

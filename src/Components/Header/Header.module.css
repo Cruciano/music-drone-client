@@ -1,0 +1,35 @@
+.header {
+    background-color: #274684;
+    padding: 12px 40px 12px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 40px;
+}
+
+.links {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.links a {
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-right: solid 2px #1c325e;
+}
+
+.links a:first-child {
+    border-left: solid 2px #1c325e;
+}
+
+.links a:hover {
+    background-color: #1c325e;
+}

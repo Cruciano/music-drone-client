@@ -46,7 +46,7 @@ const LoginPage = ({history}) => {
                             </div>
                             <button className={styles.button} type="submit">Sign in</button>
                             <div className={styles.redirection}>
-                                {"Already registered? "}
+                                {"Don't have account? "}
                                 <NavLink to="/Registration">Sign up</NavLink>
                             </div>
                         </Form>
