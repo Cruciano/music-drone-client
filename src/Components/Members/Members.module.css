@@ -1,0 +1,13 @@
+.members {
+    width: 200px;
+    margin: 10px;
+}
+
+.member {
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+    background-color: #274684;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
