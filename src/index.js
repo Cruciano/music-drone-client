@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import LoginPage from "./pages/AuthenticationPages/LoginPage";
 import RegistrationPage from "./pages/AuthenticationPages/RegistrationPage";
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import userReduser from "./redusers/UserReduser";
+
+const store = createStore(userReduser);
 
 function Root() {
     return (
@@ -20,11 +25,13 @@ function Root() {
 }
 
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Root/>
-        </BrowserRouter>
-    </React.StrictMode>,
+    <Provider store={store}>
+        <React.StrictMode>
+            <BrowserRouter>
+                <Root/>
+            </BrowserRouter>
+        </React.StrictMode>
+    </Provider>,
     document.getElementById('root')
 );
 

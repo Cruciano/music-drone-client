@@ -7,10 +7,14 @@ const CreateRoom = () => {
 }
 
 const HomePage = () => {
+    //let name = sessionStorage.getItem('user').name;
+
     return (
         <div className={styles.page}>
             <div className={styles.wrapper}>
-                <div className={styles.title}>Welcome, user_name!</div>
+                <div className={styles.title}>
+                    Welcome, user_name!
+                </div>
                 <div className={styles.subtitle}>
                     <div>You can join public room or create your own</div>
                     <button onClick={CreateRoom}>Create room</button>

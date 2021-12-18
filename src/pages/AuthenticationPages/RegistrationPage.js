@@ -3,9 +3,18 @@ import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import styles from './Authentication.module.css';
 import NavLink from "react-router-dom/es/NavLink";
+import userService from "../../Services/UserService";
+import {useDispatch} from "react-redux";
 
 const schema = Yup.object().shape({
-    login: Yup.string()
+    name: Yup.string()
+        .required('Required')
+        .min(2, 'Login must be 2+ characters'),
+    surname: Yup.string()
+        .required('Required')
+        .min(2, 'Login must be 2+ characters'),
+    email: Yup.string()
+        .email('Invalid email')
         .required('Required')
         .min(2, 'Login must be 2+ characters'),
     password: Yup.string()
@@ -27,9 +36,24 @@ const schema = Yup.object().shape({
 });
 
 const RegistrationPage = ({history}) => {
+    const dispatch = useDispatch();
+
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false);
         actions.resetForm();
+        userService.register(
+            values.name,
+            values.surname,
+            values.email,
+            values.password
+        ).then(isRegistered => {
+            if(isRegistered){
+                dispatch({type: "logged-in"})
+            }
+            else {
+                dispatch({type: "registration-failed"})
+            }
+        });
         history.push('/');
     }
 
@@ -39,7 +63,9 @@ const RegistrationPage = ({history}) => {
                 <div className={styles.title}>Music Drone</div>
                 <Formik
                     initialValues={{
-                        login: '',
+                        name: '',
+                        surname: '',
+                        email: '',
                         password: '',
                         confirmPassword: ''
                     }}
@@ -49,9 +75,21 @@ const RegistrationPage = ({history}) => {
                     {({errors, touched}) => (
                         <Form classname={styles.form}>
                             <div className={styles.formItem}>
-                                <Field name="login" placeholder="Login"/>
-                                {errors.login && touched.login ? (
-                                    <div className={styles.help}>{errors.login}</div>
+                                <Field name="name" placeholder="name"/>
+                                {errors.name && touched.name ? (
+                                    <div className={styles.help}>{errors.name}</div>
+                                ) : <div className={`${styles.help} ${styles.hidden}`}>hidden</div>}
+                            </div>
+                            <div className={styles.formItem}>
+                                <Field name="surname" placeholder="surname"/>
+                                {errors.surname && touched.surname ? (
+                                    <div className={styles.help}>{errors.surname}</div>
+                                ) : <div className={`${styles.help} ${styles.hidden}`}>hidden</div>}
+                            </div>
+                            <div className={styles.formItem}>
+                                <Field name="email" placeholder="Email"/>
+                                {errors.email && touched.email ? (
+                                    <div className={styles.help}>{errors.email}</div>
                                 ) : <div className={`${styles.help} ${styles.hidden}`}>hidden</div>}
                             </div>
                             <div className={styles.formItem}>
