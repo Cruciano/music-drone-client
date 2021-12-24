@@ -2,8 +2,8 @@ import React from 'react';
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import styles from './Authentication.module.css';
-import NavLink from "react-router-dom/es/NavLink";
-import userService from "../../Services/UserService";
+import {NavLink} from "react-router-dom/";
+import userService from "../../API/UserService";
 import {useDispatch, useSelector} from "react-redux";
 import {userStatuses} from "../../redusers/UserStatuses";
 
