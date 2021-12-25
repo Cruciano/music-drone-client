@@ -3,9 +3,6 @@ import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import styles from './Authentication.module.css';
 import {NavLink} from "react-router-dom/";
-import userService from "../../API/UserService";
-import {useDispatch, useSelector} from "react-redux";
-import {userStatuses} from "../../redusers/UserStatuses";
 
 const schema = Yup.object().shape({
     email: Yup.string()
@@ -15,23 +12,9 @@ const schema = Yup.object().shape({
 });
 
 const LoginPage = ({history}) => {
-    const dispatch = useDispatch();
-    const logStatus = useSelector(state => state.LogStatus);
-
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false);
         actions.resetForm();
-        userService.login(
-            values.email,
-            values.password
-        ).then(isLoggedin => {
-            if(isLoggedin){
-                dispatch({type: "logged-in"})
-            }
-            else {
-                dispatch({type: "login-failed"})
-            }
-        });
         history.push('/');
     }
 
@@ -39,9 +22,9 @@ const LoginPage = ({history}) => {
         <div className={styles.page}>
             <div className={styles.wrapper}>
                 <div className={styles.title}>Music Drone</div>
-                {logStatus === userStatuses.LOGIN_FAILED
+                {/*logStatus === userStatuses.LOGIN_FAILED
                     ? <div className={styles.help}>Invalid login or password</div>
-                    : null}
+                    : null*/}
                 <Formik
                     initialValues={{
                         email: '',

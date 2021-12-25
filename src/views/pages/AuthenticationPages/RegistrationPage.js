@@ -3,8 +3,6 @@ import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import styles from './Authentication.module.css';
 import {NavLink} from "react-router-dom/";
-import userService from "../../API/UserService";
-import {useDispatch} from "react-redux";
 
 const schema = Yup.object().shape({
     name: Yup.string()
@@ -36,24 +34,9 @@ const schema = Yup.object().shape({
 });
 
 const RegistrationPage = ({history}) => {
-    const dispatch = useDispatch();
-
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false);
         actions.resetForm();
-        userService.register(
-            values.name,
-            values.surname,
-            values.email,
-            values.password
-        ).then(isRegistered => {
-            if(isRegistered){
-                dispatch({type: "logged-in"})
-            }
-            else {
-                dispatch({type: "registration-failed"})
-            }
-        });
         history.push('/');
     }
 

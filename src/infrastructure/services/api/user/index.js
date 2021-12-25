@@ -1,7 +1,7 @@
-import sendRequest from "./SendRequest";
+import sendRequest from "../SendRequest";
 
-class userService{
-    async login(email, password) {
+export default {
+    login: async (email, password) => {
         const data = {
             login: email,
             password: password
@@ -17,9 +17,9 @@ class userService{
             return true;
         }
         return false;
-    }
+    },
 
-    async profile (){
+    profile: async () => {
         let result = { status: null, data: null};
         const response = await sendRequest('GET', true, '/api/Account/profile');
 
@@ -29,10 +29,10 @@ class userService{
             return result.data;
         }
         return "";
-    }
+    },
 
-    async register(name, surname, email, password) {
-       const data = {
+    register: async (name, surname, email, password) => {
+        const data = {
             name: name,
             surname: surname,
             email: email,
@@ -42,11 +42,9 @@ class userService{
         const response = await sendRequest('POST', false, '/api/Account/register', data);
 
         return response.ok;
-    }
+    },
 
-    logout(){
+    logout: () => {
         localStorage.removeItem("token");
-    }
+    },
 }
-
-export default new userService()

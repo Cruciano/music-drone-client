@@ -1,8 +1,8 @@
-import React from 'react';
-import userService from "../../API/UserService";
+/*import React from 'react';
+import userService from "../../../API/UserService";
 import styles from "./ApiTest.module.css"
-import roomService from "../../API/RoomService";
-import roomUserService from "../../API/RoomUserService";
+import roomService from "../../../API/RoomService";
+import roomUserService from "../../../API/RoomUserService";
 
 const LoginTest = async () => {
     await userService.login("vasya@gmail.com", "Aa-11111")
@@ -60,11 +60,11 @@ const GetMyRooms = async () => {
 const Exit = async () => {
     const isExit = await roomUserService.Exit("d6c84f49-047a-4f4d-d5ab-08d9c6f4e227");
     console.log(isExit)
-}
+}*/
 
 const ApiTestPage = () => {
-    return (
-        <div className={styles.page}>
+    return ( <></>
+        /*<div className={styles.page}>
             <div className={styles.block}>
                 <h4>User tests</h4>
                 <button onClick={LoginTest}>Login</button>
@@ -86,7 +86,7 @@ const ApiTestPage = () => {
                 <button onClick={GetMyRooms}>Get my rooms</button>
                 <button onClick={Exit}>Exit</button>
             </div>
-        </div>
+        </div>*/
     );
 };
 

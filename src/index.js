@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './views/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import LoginPage from "./pages/AuthenticationPages/LoginPage";
-import RegistrationPage from "./pages/AuthenticationPages/RegistrationPage";
+import LoginPage from "./views/pages/AuthenticationPages/LoginPage";
+import RegistrationPage from "./views/pages/AuthenticationPages/RegistrationPage";
 import {Provider} from "react-redux";
-import {createStore} from "redux";
-import userReduser from "./redusers/UserReduser";
+import {configureStore} from "./application/store";
+import services from "./infrastructure/services"
 
-const store = createStore(userReduser);
 
 function Root() {
     return (
@@ -25,7 +24,7 @@ function Root() {
 }
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={configureStore(services)}>
         <React.StrictMode>
             <BrowserRouter>
                 <Root/>

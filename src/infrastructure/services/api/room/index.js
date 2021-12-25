@@ -1,7 +1,7 @@
-import SendRequest from "./SendRequest";
+import SendRequest from "../SendRequest";
 
-class roomService{
-    async create(name) {
+export default {
+    create: async (name) => {
         const data = {
             name: name,
         };
@@ -15,9 +15,9 @@ class roomService{
             return result.data.name;
         }
         return ""
-    }
+    },
 
-    async GetAll(){
+    getAll: async () => {
         let result = { status: null, data: null};
         const response = await SendRequest('GET', true, '/api/Room/all');
 
@@ -27,9 +27,9 @@ class roomService{
             return result.data;
         }
         return [];
-    }
+    },
 
-    async GetById(id){
+    getById: async (id) => {
         let result = { status: null, data: null};
         const response = await SendRequest('GET', true, `/api/Room/${id}`);
 
@@ -39,12 +39,10 @@ class roomService{
             return result.data;
         }
         return {};
-    }
+    },
 
-    async Delete(id) {
+    delete: async (id) => {
         const response = await SendRequest('DELETE', true, `/api/Room/${id}`);
         return response.ok;
     }
 }
-
-export default new roomService()

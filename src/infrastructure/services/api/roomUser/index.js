@@ -1,15 +1,15 @@
-import SendRequest from "./SendRequest";
+import SendRequest from "../SendRequest";
 
-class roomUserService{
-    async Enter(id) {
+export default {
+    enter: async (id) => {
         const data = {
             roomId: id,
         };
         const response = await SendRequest('POST', true, '/api/RoomUser/enter', data);
         return response.ok;
-    }
+    },
 
-    async GetMembers(id){
+    getMembers: async (id) => {
         let result = { status: null, data: null};
         const response = await SendRequest('GET', true, `/api/RoomUser/${id}`);
 
@@ -19,9 +19,9 @@ class roomUserService{
             return result.data;
         }
         return [];
-    }
+    },
 
-    async GetMyRooms(){
+    getMyRooms: async () => {
         let result = { status: null, data: null};
         const response = await SendRequest('GET', true, '/api/RoomUser/rooms');
 
@@ -31,9 +31,9 @@ class roomUserService{
             return result.data;
         }
         return [];
-    }
+    },
 
-    async Exit(id) {
+    exit: async (id) => {
         const data = {
             roomId: id,
         };
@@ -41,5 +41,3 @@ class roomUserService{
         return response.ok;
     }
 }
-
-export default new roomUserService()
