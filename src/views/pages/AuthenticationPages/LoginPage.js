@@ -2,7 +2,11 @@ import React from 'react';
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import styles from './Authentication.module.css';
-import {NavLink} from "react-router-dom/";
+import {NavLink, Redirect} from "react-router-dom/";
+import {useDispatch, useSelector} from "react-redux";
+import {getAuthStatus} from "../../../application/selectors/authStatus";
+import {login_failure, login_success} from "../../../application/reducers/userUI";
+import {login} from "../../../application/actions/user";
 
 const schema = Yup.object().shape({
     email: Yup.string()
@@ -11,20 +15,30 @@ const schema = Yup.object().shape({
         .required('Required'),
 });
 
-const LoginPage = ({history}) => {
+const LoginPage = () => {
+    const dispatch = useDispatch();
+    const authStatus = useSelector(getAuthStatus);
+
+
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false);
         actions.resetForm();
-        history.push('/');
+        dispatch(login({
+            email: values.email,
+            password: values.password,
+        }))
     }
 
     return (
         <div className={styles.page}>
             <div className={styles.wrapper}>
                 <div className={styles.title}>Music Drone</div>
-                {/*logStatus === userStatuses.LOGIN_FAILED
+                {authStatus === login_success
+                    ? <Redirect to="/"/>
+                    : null}
+                {authStatus === login_failure
                     ? <div className={styles.help}>Invalid login or password</div>
-                    : null*/}
+                    : null}
                 <Formik
                     initialValues={{
                         email: '',

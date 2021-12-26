@@ -28,7 +28,7 @@ export default {
             result.data = await response.json();
             return result.data;
         }
-        return "";
+        return {};
     },
 
     register: async (name, surname, email, password) => {

@@ -3,6 +3,11 @@ import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import styles from './Authentication.module.css';
 import {NavLink} from "react-router-dom/";
+import {useDispatch, useSelector} from "react-redux";
+import {getAuthStatus} from "../../../application/selectors/authStatus";
+import {register_failure, register_success} from "../../../application/reducers/userUI";
+import {register} from "../../../application/actions/user";
+import {Redirect} from "react-router-dom";
 
 const schema = Yup.object().shape({
     name: Yup.string()
@@ -33,17 +38,31 @@ const schema = Yup.object().shape({
         })
 });
 
-const RegistrationPage = ({history}) => {
+const RegistrationPage = () => {
+    const dispatch = useDispatch();
+    const authStatus = useSelector(getAuthStatus);
+
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false);
         actions.resetForm();
-        history.push('/');
+        dispatch(register({
+            name: values.name,
+            surname: values.surname,
+            email: values.email,
+            password: values.password,
+        }));
     }
 
     return (
         <div className={styles.page}>
             <div className={styles.wrapper}>
                 <div className={styles.title}>Music Drone</div>
+                {authStatus === register_success
+                    ? <Redirect to="/"/>
+                    : null}
+                {authStatus === register_failure
+                    ? <div className={styles.help}>Registration failed</div>
+                    : null}
                 <Formik
                     initialValues={{
                         name: '',
@@ -56,7 +75,7 @@ const RegistrationPage = ({history}) => {
                     onSubmit={(values, actions) => handleSubmit(values, actions)}
                 >
                     {({errors, touched}) => (
-                        <Form classname={styles.form}>
+                        <Form className={styles.form}>
                             <div className={styles.formItem}>
                                 <Field name="name" placeholder="name"/>
                                 {errors.name && touched.name ? (
