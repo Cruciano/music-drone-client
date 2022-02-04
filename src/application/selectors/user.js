@@ -1,5 +1,5 @@
-export const getIsLoggedIn = state => state.user.IsLoggedIn;
+export const getIsLoggedIn = state => state.user.isLoggedIn;
 
-export const getName = state => state.user.name;
+export const getFirstName = state => state.user.firstName;
 
-export const getSurname = state => state.user.surname;
+export const getLastName = state => state.user.lastName;

@@ -22,17 +22,21 @@
     text-decoration: none;
 }
 
-.links a {
+.links button {
+    background-color: #274684;
+    border: none;
+    color: white;
     display: block;
     padding-left: 15px;
     padding-right: 15px;
     border-right: solid 2px #1c325e;
+    cursor: pointer;
 }
 
-.links a:first-child {
+.links button:first-child {
     border-left: solid 2px #1c325e;
 }
 
-.links a:hover {
+.links button:hover {
     background-color: #1c325e;
 }

@@ -1,24 +1,24 @@
-import {LOGIN, LOGOUT} from "../actions/user";
+import {LOGOUT, SET_PROFILE} from "../actions/user";
 
 const initialState = {
     isLoggedIn: false,
-    name: '',
-    surname: '',
+    firstName: '',
+    lastName: '',
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN:
+        case SET_PROFILE:
             return {
                 isLoggedIn: true,
-                name: action.payload.name,
-                surname: action.payload.surname,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
             };
         case LOGOUT:
             return {
                 isLoggedIn: false,
-                name: '',
-                surname: '',
+                firstName: '',
+                lastName: '',
             };
         default:
             return state;

@@ -170,7 +170,7 @@ class Player extends React.Component {
 
                     <div ref={ref => this.timelineRef = ref} id="timeline">
                         <div ref={ref => this.playheadRef = ref} id="playhead"></div>
-                        <div ref={ref => this.hoverPlayheadRef = ref} class="hover-playhead" data-content="0:00"></div>
+                        <div ref={ref => this.hoverPlayheadRef = ref} className="hover-playhead" data-content="0:00"></div>
                     </div>
 
                     <div className="controls">
@@ -179,7 +179,7 @@ class Player extends React.Component {
                         <button onClick={this.playOrPause} className="play current-btn">
                             {
                                 (!pause) ? <i className="fas fa-play"></i>
-                                    :<i class="fas fa-pause"></i>
+                                    :<i className="fas fa-pause"></i>
                             }
                         </button>
                         <button onClick={this.nextSong} className="next prev-next current-btn"><i className="fas fa-forward"></i></button>

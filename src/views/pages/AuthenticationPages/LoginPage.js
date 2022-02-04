@@ -1,12 +1,13 @@
 import React from 'react';
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
-import styles from './Authentication.module.css';
+import styles from '../../CommomStyles/Form.module.css';
 import {NavLink, Redirect} from "react-router-dom/";
 import {useDispatch, useSelector} from "react-redux";
 import {getAuthStatus} from "../../../application/selectors/authStatus";
-import {login_failure, login_success} from "../../../application/reducers/userUI";
+import {login_failure} from "../../../application/reducers/userUI";
 import {login} from "../../../application/actions/user";
+import {getIsLoggedIn} from "../../../application/selectors/user";
 
 const schema = Yup.object().shape({
     email: Yup.string()
@@ -18,7 +19,7 @@ const schema = Yup.object().shape({
 const LoginPage = () => {
     const dispatch = useDispatch();
     const authStatus = useSelector(getAuthStatus);
-
+    const isLoggedIn = useSelector(getIsLoggedIn);
 
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false);
@@ -33,7 +34,7 @@ const LoginPage = () => {
         <div className={styles.page}>
             <div className={styles.wrapper}>
                 <div className={styles.title}>Music Drone</div>
-                {authStatus === login_success
+                {isLoggedIn
                     ? <Redirect to="/"/>
                     : null}
                 {authStatus === login_failure

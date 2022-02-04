@@ -5,6 +5,7 @@ export const LOGIN = '[login]';
 export const LOGIN_SUCCESS = '[login] success';
 export const LOGIN_FAILURE = '[login] failure';
 export const LOGOUT = '[logout]';
+export const SET_PROFILE = '[profile] set';
 
 export const register = user => ({
     type: REGISTER,
@@ -15,6 +16,11 @@ export const login = user => ({
     type: LOGIN,
     payload: user,
 });
+
+export const setProfile = user => ({
+    type: SET_PROFILE,
+    payload: user,
+})
 
 export const logout = {
     type: LOGOUT,

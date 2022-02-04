@@ -1,0 +1,1 @@
+export const getRoomUsers = state => state.roomUser.users;

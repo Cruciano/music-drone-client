@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Members.module.css';
 
-const Member = () => {
+const MemberItem = ({username}) => {
     return (
         <div className={styles.member}>
-            Member
+            {username}
         </div>
     );
 };
 
-export default Member;
+export default MemberItem;

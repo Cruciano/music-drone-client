@@ -21,10 +21,6 @@
     font-size: 24px;
 }
 
-.description {
-    font-size: 20px;
-}
-
 .rightBlock {
     flex-shrink: 0;
     display: flex;
